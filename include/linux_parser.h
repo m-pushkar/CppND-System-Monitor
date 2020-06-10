@@ -6,7 +6,8 @@
 #include <string>
 
 namespace LinuxParser {
-// Paths
+
+// Paths from Linux system folder structure
 const std::string kProcDirectory{"/proc/"};
 const std::string kCmdlineFilename{"/cmdline"};
 const std::string kCpuinfoFilename{"/cpuinfo"};
@@ -18,7 +19,7 @@ const std::string kVersionFilename{"/version"};
 const std::string kOSPath{"/etc/os-release"};
 const std::string kPasswordPath{"/etc/passwd"};
 
-// System
+// System information
 float MemoryUtilization();
 long UpTime();
 std::vector<int> Pids();
@@ -27,7 +28,7 @@ int RunningProcesses();
 std::string OperatingSystem();
 std::string Kernel();
 
-// CPU
+// CPU information
 enum CPUStates {
   kUser_ = 0,
   kNice_,
