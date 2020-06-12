@@ -6,6 +6,17 @@ Follow along with the classroom lesson to complete the project!
 
 ![System Monitor](images/monitor.png)
 
+You need to make changes to following file:
+
+1. linux_parser.h
+2. process.h
+3. processor.h
+4. system.h
+5. format.cpp
+6. `linux_parser.cpp`
+7. ncurses_display.cpp
+8. process.cpp
+
 ## Udacity Linux Workspace
 [Udacity](https://www.udacity.com/) provides a browser-based Linux [Workspace](https://engineering.udacity.com/creating-a-gpu-enhanced-virtual-desktop-for-udacity-497bdd91a505) for students. 
 
