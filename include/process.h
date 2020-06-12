@@ -23,7 +23,7 @@ class Process {
  private:
   int pid_;
   int system_uptime_;
-  float cpu;
+  float cpu_;
 };
 
 #endif

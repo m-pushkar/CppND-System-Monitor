@@ -41,7 +41,7 @@ enum CPUStates {
   kGuest_,
   kGuestNice_
 };
-std::vector<std::string> CpuUtilization();
+std::vector<long> CpuUtilization();
 long TotalTime(int pid);
 
 // Processes

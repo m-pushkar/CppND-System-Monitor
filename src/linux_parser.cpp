@@ -4,6 +4,7 @@
 #include <unistd.h>
 
 #include <cassert>
+#include <iostream>
 #include <string>
 #include <vector>
 
@@ -27,7 +28,7 @@ string LinuxParser::OperatingSystem() {
       std::replace(line.begin(), line.end(), ' ', '_');
       std::replace(line.begin(), line.end(), '=', ' ');
       std::replace(line.begin(), line.end(), '"', ' ');
-      istringstream linestream(line);
+      std::istringstream linestream(line);
       while (linestream >> key >> value) {
         if (key == "PRETTY_NAME") {
           std::replace(value.begin(), value.end(), '_', ' ');
@@ -147,8 +148,8 @@ long LinuxParser::TotalTime(int pid) {
 }
 
 // Read and return CPU utilization
-vector<string> LinuxParser::CpuUtilization() {
-  vector<string> cpu_utilization{};
+vector<long> LinuxParser::CpuUtilization() {
+  vector<long> cpu_utilization{};
   string line;
   ifstream stream(kProcDirectory + kStatFilename);
   if (stream.is_open()) {
