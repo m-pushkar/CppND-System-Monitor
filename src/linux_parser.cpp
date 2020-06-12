@@ -272,7 +272,8 @@ string LinuxParser::User(int pid) {
   ifstream stream{kPasswordPath};
   if (stream.is_open()) {
     while (getline(stream, line)) {
-      std::replace(line.begin(), line.end(), ':','');
+      std::replace(line.begin(), line.end(), ':',
+                   ' ');  // Make sure to replace ':' with 'Space'
       istringstream linestream(line);
       if (linestream >> name >> name_1 >> name_uid && name_uid == uid) {
         return name;
