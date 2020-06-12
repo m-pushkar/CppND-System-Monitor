@@ -3,6 +3,7 @@
 #include <dirent.h>
 #include <unistd.h>
 
+#include <cassert>
 #include <string>
 #include <vector>
 
@@ -26,7 +27,7 @@ string LinuxParser::OperatingSystem() {
       std::replace(line.begin(), line.end(), ' ', '_');
       std::replace(line.begin(), line.end(), '=', ' ');
       std::replace(line.begin(), line.end(), '"', ' ');
-      std::istringstream linestream(line);
+      istringstream linestream(line);
       while (linestream >> key >> value) {
         if (key == "PRETTY_NAME") {
           std::replace(value.begin(), value.end(), '_', ' ');
@@ -93,8 +94,8 @@ float LinuxParser::MemoryUtilization() {
     }
   }
   // Utilizing memory including buffers
-  return ((float)(total_memory - free_memory + buffer_memory) /
-              (float)total_memory;)
+  return ((float)(total_memory - free_memory + buffer_memory)) /
+         ((float)total_memory);
 }
 
 // Read and return the system uptime
@@ -147,7 +148,7 @@ long LinuxParser::TotalTime(int pid) {
 
 // Read and return CPU utilization
 vector<string> LinuxParser::CpuUtilization() {
-  vector<long> cpu_utilization;
+  vector<string> cpu_utilization{};
   string line;
   ifstream stream(kProcDirectory + kStatFilename);
   if (stream.is_open()) {
@@ -248,7 +249,7 @@ string LinuxParser::Uid(int pid) {
     while (getline(stream, line)) {
       istringstream linestream(line);
       linestream >> key;
-      if (key = "Uid:") {
+      if (key == "Uid:") {
         linestream >> uid;
         return uid;
       }
@@ -270,7 +271,7 @@ string LinuxParser::User(int pid) {
   ifstream stream{kPasswordPath};
   if (stream.is_open()) {
     while (getline(stream, line)) {
-      std::replace(line.begin(), line.end(), ':', '');
+      std::replace(line.begin(), line.end(), ':','');
       istringstream linestream(line);
       if (linestream >> name >> name_1 >> name_uid && name_uid == uid) {
         return name;

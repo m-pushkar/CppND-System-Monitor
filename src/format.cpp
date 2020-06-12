@@ -1,6 +1,7 @@
 #include "format.h"
 
 #include <iostream>
+#include <sstream>
 #include <string>
 
 using std::string;
@@ -18,7 +19,7 @@ string Format::ElapsedTime(long seconds) {
   sec = seconds % 60;
 
   // Display converted output
-  stringstream output;
+  stringstream output{};
   output.fill('0');
   output.width(2);
   output << hour << ":";
