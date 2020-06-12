@@ -28,7 +28,7 @@ float Process::CpuUtilization() {
 string Process::Command() { return LinuxParser::Command(pid_); }
 
 // Return this process's memory utilization
-string Process::Ram() { return LinuuxParser::Ram(pid_); }
+string Process::Ram() { return LinuxParser::Ram(pid_); }
 
 // Return the user (name) that generated this process
 string Process::User() { return LinuxParser::User(pid_); }
