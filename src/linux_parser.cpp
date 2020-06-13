@@ -85,7 +85,7 @@ float LinuxParser::MemoryUtilization() {
       istringstream linestream(line);
       linestream >> key >> memory;
 
-      if (key == "MemFree:") {
+      if (key == "MemTotal:") {
         total_memory = memory;
       } else if (key == "MemFree:") {
         free_memory = memory;
